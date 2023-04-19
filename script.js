@@ -3,21 +3,29 @@
 // in the html.
 
 //var hours= ['#hour-9','#hour-10', '#hour-11', '#hour-12', '#hour-1', '#hour-2', '#hour-3', '#hour-4', '#hour-5'];
-//var textArea=document.querySelector('.description');
+
 
 $(document).ready(function () {
   var saveBtn= $("button");
-  var itemKey = localStorage.getItem("hour-9");
 
-
- saveBtn.on('click', function(event){
+ saveBtn.on('click', function(event){ 
  var userInput = $(this).siblings("textarea").val();
+ //'this' references the saveBtn, or the button tags in the html
  var timeBlockId = $(this).parent().attr("id");
 localStorage.setItem(timeBlockId, userInput);
+//this function makes it so that when you click the save button,
+//it will store the value found in the text area div to local storage
  })
 
- var today = dayjs();
+ var today = dayjs(); //creates a variable for day.js to be used
  $('#currentDay').text(today.format('MMM D, YYYY'));
+ //this code places the time of day in the div with the 'current day' id
+ //we call upon the today variable to use day.js and then we tell it which format we want
+
+ $(window).on('load', function() {
+  // do something when the page is loaded or reloaded
+  console.log('hello');
+});
 
 });
 
@@ -41,5 +49,4 @@ localStorage.setItem(timeBlockId, userInput);
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
 
