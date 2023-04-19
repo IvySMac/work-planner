@@ -4,7 +4,7 @@
 $(document).ready(function () {
   var saveBtn= $("button");
 
- saveBtn.on('click', function(event){ 
+ saveBtn.on('click', function(){ 
  var userInput = $(this).siblings("textarea").val();
  //'this' references the saveBtn, or the button tags in the html
  var timeBlockId = $(this).parent().attr("id");
@@ -17,13 +17,48 @@ localStorage.setItem(timeBlockId, userInput);
  $('#currentDay').text(today.format('MMM D, YYYY'));
  //this code places the time of day in the div with the 'current day' id
  //we call upon the today variable to use day.js and then we tell it which format we want
+ function colorTimeBlock(){
+  var currentHour = dayjs().hour();
+  console.log(currentHour);
+  $(".time-block").each(function(){
+    var blockHour = parseInt($(this).attr("id").split("-")[1]);
+    console.log(blockHour);
+      
+    if(blockHour < currentHour)
+    {
+      $(this).addClass("past");
+    }
+    else if(blockHour === currentHour)
+    {
+      $(this).addClass("present");
+      $(this).removeClass("past");
+    }
+    else{
+      $(this).removeClass("present");
+      $(this).removeClass("past");
+      $(this).addClass("future");
+    }
+    
+  })
+ }
 
- $(window).on('load', function() {
-  // do something when the page is loaded or reloaded
-  console.log('hello');
+ colorTimeBlock();
+
+
+
+
+ for(var i=8;i<=17;i++)
+{
+  $(`#hour-${i} .description`).val(localStorage.getItem('hour-'+i));
+}
+
 });
 
-});
+
+// $(window).on('load', function() {
+// //do something when the page is loaded or reloaded
+// console.log('hello');
+// });
 
 
 
