@@ -14,7 +14,8 @@ localStorage.setItem(timeBlockId, userInput);
  $('#currentDay').text(today.format('MMM D, YYYY'));
  //this code places the time of day in the div with the 'current day' id 
  function colorTimeBlock(){
-  var currentHour = dayjs().hour();
+var currentHour=10;
+  //var currentHour = dayjs().hour();
   console.log(currentHour);
   $(".time-block").each(function(){
     var blockHour = parseInt($(this).attr("id").split("-")[1]);

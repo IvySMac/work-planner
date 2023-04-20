@@ -6,9 +6,11 @@ To get a better grasp of Day.js, JQuery, and the event listener function, I'll b
 
 ## Usage
 
-[insert screenshot here]
+![A big header reads 'Work Day Scheduler' and the subtitles under it reads 'A simple calendar app for scheduling your work day'. Right under that, there are 7 rows labeled by the hour and are colored either gray, red, green and have a save button displayed next to them](work-planner-screenshot.jpg)
 
-A planner can be key in keeping your busy work schedule organized and on track! This planner will allow you to add events at each hour and store it for later. A color coded feature also further organizes these events by past, present, and future. 
+A planner can be key in keeping your busy work schedule organized and on track! This planner will allow you to add events at each hour and store them so that you can revisit them later. A color coded feature also further organizes these events by displaying past in gray, present in red, and future in green. These colors will change depending on your current time-zone for better accuracy!  
+
+<a href="https://ivysmac.github.io/work-planner/">Live Site</a>
 
 ## User Story
 
