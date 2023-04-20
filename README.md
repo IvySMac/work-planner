@@ -35,3 +35,7 @@ THEN the text for that event is saved in local storage
 WHEN I refresh the page
 THEN the saved events persist
 ```
+
+## Credits
+
+starter code provided by KU Bootcamp. This is used strictly for educational purposes only 
