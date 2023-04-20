@@ -1,6 +1,3 @@
-//var hours= ['#hour-9','#hour-10', '#hour-11', '#hour-12', '#hour-1', '#hour-2', '#hour-3', '#hour-4', '#hour-5'];
-
-
 $(document).ready(function () {
   var saveBtn= $("button");
 
@@ -15,24 +12,30 @@ localStorage.setItem(timeBlockId, userInput);
 
  var today = dayjs(); //creates a variable for day.js to be used
  $('#currentDay').text(today.format('MMM D, YYYY'));
- //this code places the time of day in the div with the 'current day' id
- //we call upon the today variable to use day.js and then we tell it which format we want
+ //this code places the time of day in the div with the 'current day' id 
  function colorTimeBlock(){
   var currentHour = dayjs().hour();
   console.log(currentHour);
   $(".time-block").each(function(){
     var blockHour = parseInt($(this).attr("id").split("-")[1]);
-    console.log(blockHour);
+    console.log(blockHour); 
+    //this breaks down the id into an array of 'hour' and 'number' 
+    //i.e ["hour","8"]
+    //to target the 8 specifically, I used [1]
+    //so this variable is calling on the second part of the id in every time-block
       
-    if(blockHour < currentHour)
+    if(blockHour < currentHour) 
     {
-      $(this).addClass("past");
+      // this changes the time block area to gray if the hour is passed
+      $(this).addClass("past"); 
     }
-    else if(blockHour === currentHour)
+    //if its not in the past, but in fact the present, it will delete the grey and add red
+    else if(blockHour === currentHour) 
     {
       $(this).addClass("present");
       $(this).removeClass("past");
     }
+    //if its in the future, it will delete the red and grey color, and add green ("future")
     else{
       $(this).removeClass("present");
       $(this).removeClass("past");
@@ -42,42 +45,13 @@ localStorage.setItem(timeBlockId, userInput);
   })
  }
 
- colorTimeBlock();
+ colorTimeBlock(); //this calls on the colorTimeBlock function to run
 
-
-
-
+//this loop keeps the text you input into the planner on the page, even after a refresh 
  for(var i=8;i<=17;i++)
 {
   $(`#hour-${i} .description`).val(localStorage.getItem('hour-'+i));
 }
 
 });
-
-
-// $(window).on('load', function() {
-// //do something when the page is loaded or reloaded
-// console.log('hello');
-// });
-
-
-
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
 
